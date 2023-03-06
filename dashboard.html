@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="signup.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <h2 style="margin-left: 20px">Teacher Portal</h2>
+      <div class="right">
+        <h3>SignUp</h3>
+        <h3 style="margin-right: 30px">Login</h3>
+      </div>
+    </nav>
+    <main>
+      <div class="container">
+        <h3 style="margin-bottom: 10px">MeShop.</h3>
+        <h4 id="name" style="margin-bottom: 10px">Welcome back:</h4>
+        <h4 id="email" style="margin-bottom: 10px">Your Email:</h4>
+        <h3>Change Password</h3>
+        <input type="text" id="oldpass" placeholder="Old Password" />
+        <input type="text" id="newpass" placeholder="New Password" />
+        <input type="text" id="cpass" placeholder="Confirm Password" />
+        <button id="change">Change</button>
+        <button id="logout">Logout</button>
+      </div>
+    </main>
+    <script>
+      const nameEl = document.getElementById("name");
+      const emailEl = document.getElementById("email");
+      const changeBtnEl = document.getElementById("change");
+      const logoutBtnEl = document.getElementById("logout");
+      let local = JSON.parse(localStorage.getItem("currentUser"));
+      console.log(local.length);
+      //setting the name & email as per user
+      nameEl.innerText += local[local.length - 1].name;
+      emailEl.innerText += local[local.length - 1].email;
+
+      //adding event listener on change button
+      changeBtnEl.addEventListener("click", () => {
+        let oldPassVal = document.getElementById("oldpass").value;
+        let newPassVal = document.getElementById("newpass").value;
+        let confirmPassVal = document.getElementById("cpass").value;
+
+        //checking if old pass matches the localstorage data
+        if (
+          oldPassVal === local[local.length - 1].pass &&
+          newPassVal === confirmPassVal
+        ) {
+          local[local.length - 1].pass = newPassVal;
+          console.log("password changed");
+          localStorage.setItem("currentUser", JSON.stringify(local));
+        } else {
+          alert("Credentials mismatch");
+        }
+      });
+
+      //adding event listener on logout button
+      logoutBtnEl.addEventListener("click", () => {
+        //removing the currentUser from localStorage
+        if (localStorage.getItem("currentUser")) {
+          local.length = local.length - 1;
+
+          localStorage.removeItem("currentUser");
+          localStorage.setItem("currentUser", JSON.stringify(local));
+          alert("current user removed from localstorage");
+
+          //refreshing the page after removing the currentUser
+          location.reload();
+        }
+      });
+    </script>
+  </body>
+</html>

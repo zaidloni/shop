@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="shop.css" />
+    <title>Me-Shop</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar_wrapper">
+        <div class="nav_logo" id="navLogo">MeShop</div>
+        <div class="nav_contents" id="navContents">
+          <ul class="content_list" id="contentList">
+            <li class="list_item" id="listItemHome">HOME</li>
+            <li class="list_item" id="listItemLogIn">LOG IN</li>
+            <li class="list_item" id="listItemSignUp">SIGN UP</li>
+            <li class="list_item" id="listItemShop">SHOP</li>
+            <li class="list_item" id="listItemMyCart">MY CART</li>
+            <li class="list_item" id="listItemProfile">PROFILE</li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="filter_section">
+      <div class="filter_wrapper">
+        <div class="prdt_category" id="prdtCategory">
+          <p class="prdt_category_title" id="prdtCatTitle">Sizes</p>
+          <input type="checkbox" class="mens" value="S" id="S" />
+          <label for="M">S</label>
+          <input type="checkbox" class="womens" value="M" id="M" />
+          <label for="W">M</label>
+          <input type="checkbox" class="jewellery" value="L" id="L" />
+          <label for="J">L</label>
+          <input type="checkbox" class="electronics" value="XL" id="XL" />
+          <label for="E">XL</label>
+        </div>
+        <div class="prdt_category_price" id="prdtCategoryPrice">
+          <p class="prdt_category_title" id="prdtCatTitle">Price</p>
+          <input type="checkbox" class="mens" value="0-50" id="one" />
+          <label for="one">$0 to $50</label>
+          <input type="checkbox" class="womens" value="50-100" id="two" />
+          <label for="two">$50 to $100</label>
+          <input type="checkbox" class="jewellery" value="100-150" id="three" />
+          <label for="three">$100 to $150</label>
+          <input
+            type="checkbox"
+            class="electronics"
+            value="150-200"
+            id="four"
+          />
+          <label for="four">$150 to $200</label>
+        </div>
+        <div class="prdt_category_price" id="prdtCategoryPrice">
+          <p class="prdt_category_title" id="prdtCatTitle">Colours</p>
+          <input type="checkbox" class="rate_one" value="red" id="oneStar" />
+          <label for="oneStar">Red</label>
+          <input type="checkbox" class="rate_two" value="black" id="twoStar" />
+          <label for="twoStar">Black</label>
+          <input
+            type="checkbox"
+            class="rate_three"
+            value="blue"
+            id="threeStar"
+          />
+          <label for="threeStar">Blue</label>
+        </div>
+      </div>
+    </section>
+    <section class="search">
+      <div class="search_div" id="searchDiv">
+        <i class="bi bi-search icon" id="searchIcon"></i>
+        <input
+          type="text"
+          class="search_bar"
+          id="searchBar"
+          placeholder="Search Here..."
+        />
+        <div class="search_categories" id="searchCategories">
+          <button class="search_cat_btn" id="searchCatBtn">ALL</button>
+          <button class="search_cat_btn" id="searchCatBtnM">MENS</button>
+          <button class="search_cat_btn" id="searchCatBtnW">WOMENS</button>
+          <button class="search_cat_btn" id="searchCatBtnJ">JEWELLRY</button>
+          <button class="search_cat_btn" id="searchCatBtnE">ELECTRONICS</button>
+        </div>
+      </div>
+    </section>
+    <section class="products">
+      <div class="products_wrapper" id="productsWrapper"></div>
+    </section>
+    <script src="./shop.js"></script>
+  </body>
+</html>

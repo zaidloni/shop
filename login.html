@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="signup.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <h2 style="margin-left: 20px">MeShop.</h2>
+      <div class="right">
+        <h3>SignUp</h3>
+        <h3 style="margin-right: 30px">Login</h3>
+      </div>
+    </nav>
+    <main>
+      <div class="container">
+        <h3>MeShop Portal</h3>
+        <input type="text" id="email" placeholder="Email" />
+        <input type="text" id="pass" placeholder="Password" />
+        <button id="login">Login</button>
+      </div>
+    </main>
+    <script>
+      let user = [];
+      const loginBtnEl = document.getElementById("login");
+
+      //adding event listener at login button
+      loginBtnEl.addEventListener("click", () => {
+        let emailVal = document.getElementById("email").value;
+        let passVal = document.getElementById("pass").value;
+
+        //getting the local storage
+        let local = JSON.parse(localStorage.getItem("user"));
+        let i = 0;
+
+        //looping through the local for checking
+        local.forEach((e) => {
+          //email & password checking
+          if (emailVal === e.email && passVal === e.pass) {
+            //generating object with random token
+            let obj = {
+              email: emailVal,
+              pass: passVal,
+              name: e.name,
+              token: crypto.randomUUID().slice(0, 16),
+            };
+            window.location.href = "./shop.html";
+            let curLocal = JSON.parse(localStorage.getItem("currentUser"));
+
+            //pushing the object inside the array
+            user.push(...curLocal);
+            user.push(obj);
+
+            //setting the array in local storage
+            localStorage.removeItem("currentUser");
+            localStorage.setItem("currentUser", JSON.stringify(user));
+            i++;
+
+            //navigating to dashboard
+            // window.location.href = "./dashboard.html";
+          } else {
+            alert("User Not FOund");
+          }
+        });
+        //if data not found in the local storage giving an alert
+        // if (i === 0) {
+        //   alert("Credential Not Found");
+        // }
+      });
+    </script>
+  </body>
+</html>

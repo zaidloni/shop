@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Me shop</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="nav">
+      <span class="title">MeShop.</span>
+      <div class="button">
+        <button onclick="handleHome()">Home</button>
+        <button onclick="handleLogin()">Login</button>
+        <button onclick="handleSignUp()">Sign Up</button>
+        <button>My Cart</button>
+      </div>
+    </div>
+
+    <main>
+      <div class="left">
+        <h1>Me Shop</h1>
+        <p>Your First Shop built on HTML,CSS AND JavaScript</p>
+        <button onclick="handleSignUp()">Login</button>
+        <button>Submit</button>
+
+        <div class="shirt">
+          <img src="./shirt.jpeg" style="width: 100%" alt="" /><br />
+          <span style="margin-right: 100px">Rs.500</span><span>S, M, L</span>
+          <p>Colours :</p>
+          <p>Rating : * * *</p>
+          <button class="card-button">Add to Cart</button>
+        </div>
+      </div>
+      <div class="right">
+        <img src="./image.jpeg" style="height: 500px; width: 850px" alt="" />
+      </div>
+    </main>
+
+    <script>
+      function handleLogin() {
+        window.location.href = "./login.html";
+      }
+      function handleSignUp() {
+        window.location.href = "./signup.html";
+      }
+      function handleHome() {
+        alert("Please Login first");
+      }
+    </script>
+  </body>
+</html>

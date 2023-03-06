@@ -1,0 +1,18 @@
+.shirt{
+    border: 1px solid black ;
+    margin-top: 20px ;
+    width: 200px ;
+    height : 388px ;
+    line-height: 20px ;
+}
+.card-button{
+    width: 200px ;
+    background-color: black ;
+    color: white ;
+    height: 25px ;
+}
+
+main{
+    display: flex ;
+}
+table

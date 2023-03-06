@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="signup.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <h2 style="margin-left: 20px">MeShop.</h2>
+      <div class="right">
+        <h3>SignUp</h3>
+        <h3 style="margin-right: 30px">Login</h3>
+      </div>
+    </nav>
+    <main>
+      <div class="container">
+        <h3>MeShop.</h3>
+        <input type="text" id="fname" placeholder="Full Name" />
+        <input type="text" id="email" placeholder="Email" />
+        <input type="text" id="pass" placeholder="Password" />
+        <input type="text" id="cpass" placeholder="Confirm Password" />
+        <button id="signup">SignUp</button>
+      </div>
+    </main>
+    <script>
+      let user = [];
+      const signUpBtnEl = document.getElementById("signup");
+
+      //adding event listener at signup button
+      signUpBtnEl.addEventListener("click", () => {
+        let fnameVal = document.getElementById("fname").value;
+        let emailVal = document.getElementById("email").value;
+        let passVal = document.getElementById("pass").value;
+        let cPassVal = document.getElementById("cpass").value;
+
+        //checking name
+        if (fnameVal.length < 4) {
+          alert("Name should be atleast 4 letters");
+        }
+        //checking email
+        else if (!emailVal.includes("@")) {
+          alert("Invalid Email");
+        }
+        //checking password
+        else if (passVal.length < 6) {
+          alert("Please Enter a strong password atleast 6 letter required");
+        }
+        //checking password & confirm password
+        else if (passVal != cPassVal) {
+          alert("password & confirm password not matched");
+        }
+
+        //creating an object with current values
+        else {
+          let obj = {
+            email: emailVal,
+            pass: passVal,
+            name: fnameVal,
+          };
+          let local = JSON.parse(localStorage.getItem("user"));
+          if (local) {
+            //pushing the object inside the array
+            user.push(...local);
+            user.push(obj);
+            localStorage.removeItem("user");
+            localStorage.setItem("user", JSON.stringify(user));
+          } else {
+            user.push(obj);
+            localStorage.setItem("user", JSON.stringify(user));
+          }
+
+          //navigating to login page
+          window.location.href = "./login.html";
+        }
+      });
+    </script>
+  </body>
+</html>
